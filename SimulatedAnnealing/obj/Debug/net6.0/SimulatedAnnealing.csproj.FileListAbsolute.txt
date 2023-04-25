@@ -1,0 +1,15 @@
+C:\Users\dawid\source\repos\SimulatedAnnealing\bin\Debug\net6.0\SimulatedAnnealing.exe
+C:\Users\dawid\source\repos\SimulatedAnnealing\bin\Debug\net6.0\SimulatedAnnealing.deps.json
+C:\Users\dawid\source\repos\SimulatedAnnealing\bin\Debug\net6.0\SimulatedAnnealing.runtimeconfig.json
+C:\Users\dawid\source\repos\SimulatedAnnealing\bin\Debug\net6.0\SimulatedAnnealing.dll
+C:\Users\dawid\source\repos\SimulatedAnnealing\bin\Debug\net6.0\SimulatedAnnealing.pdb
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\SimulatedAnnealing.csproj.AssemblyReference.cache
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\SimulatedAnnealing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\SimulatedAnnealing.AssemblyInfoInputs.cache
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\SimulatedAnnealing.AssemblyInfo.cs
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\SimulatedAnnealing.csproj.CoreCompileInputs.cache
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\SimulatedAnnealing.dll
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\refint\SimulatedAnnealing.dll
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\SimulatedAnnealing.pdb
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\SimulatedAnnealing.genruntimeconfig.cache
+C:\Users\dawid\source\repos\SimulatedAnnealing\obj\Debug\net6.0\ref\SimulatedAnnealing.dll
