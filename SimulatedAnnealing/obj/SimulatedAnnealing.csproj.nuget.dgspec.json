@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dawid\\source\\repos\\SimulatedAnnealing\\SimulatedAnnealing.csproj": {}
+    "C:\\Users\\dawid\\source\\repos\\LAB_AI\\SimulatedAnnealing\\SimulatedAnnealing.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dawid\\source\\repos\\SimulatedAnnealing\\SimulatedAnnealing.csproj": {
+    "C:\\Users\\dawid\\source\\repos\\LAB_AI\\SimulatedAnnealing\\SimulatedAnnealing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dawid\\source\\repos\\SimulatedAnnealing\\SimulatedAnnealing.csproj",
+        "projectUniqueName": "C:\\Users\\dawid\\source\\repos\\LAB_AI\\SimulatedAnnealing\\SimulatedAnnealing.csproj",
         "projectName": "SimulatedAnnealing",
-        "projectPath": "C:\\Users\\dawid\\source\\repos\\SimulatedAnnealing\\SimulatedAnnealing.csproj",
+        "projectPath": "C:\\Users\\dawid\\source\\repos\\LAB_AI\\SimulatedAnnealing\\SimulatedAnnealing.csproj",
         "packagesPath": "C:\\Users\\dawid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dawid\\source\\repos\\SimulatedAnnealing\\obj\\",
+        "outputPath": "C:\\Users\\dawid\\source\\repos\\LAB_AI\\SimulatedAnnealing\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
