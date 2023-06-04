@@ -41,6 +41,7 @@ namespace Projekt_1
             long duration = stoper.ElapsedMilliseconds;
             harmonogram.Print();
             Console.WriteLine($"Czas trwania algorytmu w ms: {duration}");
+            
             // Algorytm genetyczny
             Genetic ga = new Genetic(prace, k);
 
