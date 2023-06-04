@@ -13,3 +13,5 @@ C:\Users\dawid\source\repos\LAB_AI\Projekt_1\obj\Debug\net7.0\refint\Projekt_1.d
 C:\Users\dawid\source\repos\LAB_AI\Projekt_1\obj\Debug\net7.0\Projekt_1.pdb
 C:\Users\dawid\source\repos\LAB_AI\Projekt_1\obj\Debug\net7.0\Projekt_1.genruntimeconfig.cache
 C:\Users\dawid\source\repos\LAB_AI\Projekt_1\obj\Debug\net7.0\ref\Projekt_1.dll
+C:\Users\dawid\source\repos\LAB_AI\Projekt_1\bin\Debug\net7.0\GAF.Core.20.dll
+C:\Users\dawid\source\repos\LAB_AI\Projekt_1\obj\Debug\net7.0\Projekt_1.csproj.CopyComplete
