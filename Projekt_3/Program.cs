@@ -8,23 +8,38 @@ namespace projekt3
     {
         static void Main(string[] args)
         {
-            // Tworzenie zmiennych
-            Variable<double> probability = Variable.Beta(1, 1);
-            Range tossCount = new Range(10); // liczba rzutów
-            VariableArray<bool> coinTosses = Variable.Array<bool>(tossCount);
-
+            // Zmienne
+            Variable<double> Prawdopodobienstwo = Variable.Beta(1, 1);
+            Range rzuty = new Range(100); // ile razy rzucamy monete
+            VariableArray<bool> runda = Variable.Array<bool>(rzuty);
+            int Orzel = 0, Reszka=0;
             // Definiowanie prior dla parametru sukcesu
-            coinTosses[tossCount] = Variable.Bernoulli(probability).ForEach(tossCount);
-
-            // Określanie obserwacji
-            coinTosses.ObservedValue = new bool[] { true, true, false, true, true, true, true, true, false, true };
-
+            runda[rzuty] = Variable.Bernoulli(Prawdopodobienstwo).ForEach(rzuty);
+            // cała zabawa
+            runda.ObservedValue = new bool[] {
+               true, true, false, true, true, true, false, true, false, true,
+                false, true, false, true, false, true, false, true, false, true,
+                true, false, true, false, true, false, true, false, true, false, 
+                false, true, false, true, false, true, false, true, false, true, 
+                true, false, true, false, true, false, true, false, true, false,
+                false, true, true, true, false, true, false, true,true, true, 
+                true, true, true, false, true, false, true, false, true, false, 
+                false, true, false, true, false, true, false, true, false, true,
+                true, false, true, false, true, true, true, false, true, false,
+                false, true, false, true, false, true, false, true, true, true };
+            for(int i=0;i<100;i++) 
+            {
+                if (runda.ObservedValue[i] == true)
+                    Orzel++;
+                if (runda.ObservedValue[i] == false)
+                    Reszka++;
+            }
             // Wnioskowanie
             InferenceEngine engine = new InferenceEngine();
-            var inferredProbability = engine.Infer<Beta>(probability);
-
-            // Wyświetlanie wyników
-            System.Console.WriteLine("Mean: " + inferredProbability.GetMean());
+            var inferredProbability = engine.Infer<Beta>(Prawdopodobienstwo);
+            // Wyników
+            Console.WriteLine("Średnia rzutów: " + inferredProbability.GetMean());
+            Console.WriteLine("Orzel: "+ Orzel+" Reszka: " +Reszka);
         }
     }
 }
