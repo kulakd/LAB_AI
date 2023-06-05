@@ -8,8 +8,8 @@ namespace Projekt_1
     {
         static void Main(string[] args)
         {
-            // Dane wejściowe
-            // zbiór zadań
+            #region Dane wejściowe
+            // Dane wejściowe do zadania
             List<Praca> prace = new List<Praca>()
             {
                 new Praca(1, 2),
@@ -19,39 +19,47 @@ namespace Projekt_1
                 new Praca(5, 7)
             };
 
-            // relacje
+            // relacje pomiędzy pracami
             prace[0].PoprzedniaPraca = prace[2];
             prace[4].NastepnaPraca = prace[0];
+
             prace[4].PoprzedniaPraca = prace[3];
             prace[3].NastepnaPraca = prace[4];
-            // liczba procesorów
-            int k = 3;
+            
+            // procesory
+            int procesory = 3;
 
             Stopwatch stoper = new Stopwatch();
             Harmonogram harmonogram;
             // Inicjalizacja harmonogramu początkowego
-            Harmonogram harmonogramInit = new Harmonogram(k);
+            Harmonogram harmonogramInit = new Harmonogram(procesory);       
             harmonogramInit.Initialize(prace);
+            #endregion
+            #region SA
+            // znalezienie najlepszego harmonogramu
             SimulatedAnnealing sa = new SimulatedAnnealing(100.0, 0.01, 0.97);
-
             stoper.Start();
             harmonogram = sa.NajlepszyHarmonogram(harmonogramInit);
             stoper.Stop();
-
             long duration = stoper.ElapsedMilliseconds;
+            Console.WriteLine("Algorytm SimulatedAnnealing");
             harmonogram.Print();
             Console.WriteLine($"Czas trwania algorytmu w ms: {duration}");
-            
-            // Algorytm genetyczny
-            Genetic ga = new Genetic(prace, k);
-
+            Console.WriteLine("");
+            Console.WriteLine("");
+            #endregion
+            #region Genetyczy
+            Genetic ga = new Genetic(prace, procesory);
             stoper.Start();
             harmonogram = ga.NajlepszyHarmonogram();
             stoper.Stop();
-
             duration = stoper.ElapsedMilliseconds;
+            Console.WriteLine("Algorytm Genetyczny");
             harmonogram.Print();
             Console.WriteLine($"Czas trwania algorytmu w ms: {duration}");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            #endregion
         }
     }
 }

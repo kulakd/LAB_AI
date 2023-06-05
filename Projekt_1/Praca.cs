@@ -9,16 +9,17 @@ namespace Projekt_1
 {
     public class Praca
     {
-        public int Numer { get; set; } // numer zadania
-        public int CzasPracy { get; set; } // czas pracy
-        public int Start { get; set; } // czas rozpoczęcia
-        public Praca NastepnaPraca { get; set; } // zadanie które może się wykonać dopiero gdy to się skończy
-        public Praca PoprzedniaPraca { get; set; } // zadanie, po którego zakończeniu, to może się rozpocząć
-        public bool PrzydzielProcesor { get; set; } // czy już przypisane do procesora
-        public Procesor Procesor { get; set; }
-        public int IDProcesor { get; set; } // indeks zadania w liście zadań procesora
-
-        // Konstruktor
+        #region Dane
+        public int Numer { get; set; } // Numer danego zadania
+        public int CzasPracy { get; set; } // Ogólny czas pracy
+        public int Start { get; set; } // Czas rozpoczęcia pracy
+        public Praca NastepnaPraca { get; set; } // Zakolejkowanie zadania, które będzie wykonywane po zrobieniu aktualnego
+        public Praca PoprzedniaPraca { get; set; } // Zadanie wykonywane przed aktualnym
+        public bool PrzydzielProcesor { get; set; } // Sprawdzenie, czy zadanie zostało już dopisane do procesora
+        public Procesor Procesor { get; set; } // Procesor zadania
+        public int IDProcesor { get; set; } // Indeks pracy w lisćie procesora
+        #endregion
+        #region Konstrukory i metody
         public Praca(int numer, int czas)
         {
             Numer = numer;
@@ -45,6 +46,7 @@ namespace Projekt_1
         {
             return Start + CzasPracy;
         }
+        #endregion
     }
 }
 

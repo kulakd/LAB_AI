@@ -9,8 +9,8 @@ namespace Projekt_1
 {
     public class Harmonogram
     {
+        #region Konstruktor
         public List<Procesor> Procesory { get; set; } // lista procesorów
-
         // Konstruktor
         public Harmonogram(int licznik)
         {
@@ -18,6 +18,7 @@ namespace Projekt_1
             for (int i = 0; i <licznik; i++)
                 Procesory.Add(new Procesor());
         }
+        #endregion
 
         // inicjalizacja harmonogramu
         public void Initialize(List<Praca> praca)
@@ -26,7 +27,7 @@ namespace Projekt_1
                 if (!p.PrzydzielProcesor)
                     PrzydzielPrace(p);
         }
-
+        //Tworzenie kolejek prac
         public static Harmonogram StworzKolejkePrac(List<Praca> prace, int licznik)
         {
             var harmonogram = new Harmonogram(licznik);
@@ -34,7 +35,7 @@ namespace Projekt_1
                 harmonogram.PrzydzielPraceWKolejnosci(p);
             return harmonogram;
         }
-
+        // Metoda przydzielająca prace w kolejce
         private void PrzydzielPraceWKolejnosci(Praca praca)
         {
             Praca praca_temp = praca;
@@ -45,11 +46,10 @@ namespace Projekt_1
                 praca_temp = praca_temp.NastepnaPraca;
             }
         }
-
-        // generowanie nowego harmonogramu na podstawie poprzedniego (zamiana miejscami zadań lub przeniesienie zadania na inny procesor)
+        //Generowanie nowego harmonogramu na podstwie poprzedniego
         public Harmonogram Sasiad(Random rand)
         {
-            // kopia starego harmonogramu
+            // Kopiujemy stary harmonogram jako kopia robocza
             Harmonogram harmonogram_kopia = Kopiuj();
             Praca praca_1 = null;
             Praca praca_2 = null;
@@ -58,39 +58,38 @@ namespace Projekt_1
             int IDpraca_1 = 0;
             int IDpraca_2 = 0;
 
-            // wybór dwóch losowych zadań
+            // Wybieranie dwóch losowych zadań
             while (praca_1 == praca_2 || Procesor1 == Procesor2)
             {
                 praca_1 = null;
                 praca_2 = null;
                 Procesor1 = harmonogram_kopia.Procesory[rand.Next(harmonogram_kopia.Procesory.Count)];
                 Procesor2 = harmonogram_kopia.Procesory[rand.Next(harmonogram_kopia.Procesory.Count)];
-
-                IDpraca_1 = rand.Next(Procesor1.ProcesorPrace.Count + 1); // + 1 ponieważ ostatni index oznacza dopisanie zadania na koniec listy, a nie podmianę
+                // + 1 bo ostatnie ID dopisuje na koniec listy, nie podmienia pracy
+                IDpraca_1 = rand.Next(Procesor1.ProcesorPrace.Count + 1); 
                 IDpraca_2 = rand.Next(Procesor2.ProcesorPrace.Count + 1);
-
+                //Przypisanie prac
                 if (Procesor1.ProcesorPrace.Count != 0 && IDpraca_1 != Procesor1.ProcesorPrace.Count)
                     praca_1 = Procesor1.ProcesorPrace[IDpraca_1];
-
                 if (Procesor2.ProcesorPrace.Count != 0 && IDpraca_2 != Procesor2.ProcesorPrace.Count)
                     praca_2 = Procesor2.ProcesorPrace[IDpraca_2];
             }
             if (praca_1 != null)
             {
-                praca_1 = PierwszaPraca(praca_1); // rekurencyjne pobranie ostatniego poprzednika
+                // Rekurencyjne pobranie ostatniego poprzednika
+                praca_1 = PierwszaPraca(praca_1); 
                 IDpraca_1 = praca_1.IDProcesor;
             }
             if (praca_2 != null)
             {
+                // Rekurencyjne pobranie ostatniego poprzednika
                 praca_2 = PierwszaPraca(praca_2);
                 IDpraca_2 = praca_2.IDProcesor;
             }
-
-            // robocze listy, zawierające ciąg zadań połączonych relacjami, służą do zamiany zadań lub przeniesienia zadania na inny procesor
+            // Listy robocze z ciągiem prac relacyjnych. Ich celem jest zamiana prac lub przenoszenie na inny procesor
             List<Praca> pom_prace_1 = new List<Praca>();
             List<Praca> pom_prace_2 = new List<Praca>();
-
-            // dopisywanie kolejnych zadań połączonych relacjami do roboczej listy i usuwanie ich z listy zadań procesora
+            // Dopisywanie kolejnych prac relacyjnych do roboczej i usuwanie ich z listy prac procesora
             while (praca_1 != null)
             {
                 pom_prace_1.Add(praca_1);
@@ -103,12 +102,10 @@ namespace Projekt_1
                 Procesor2.ProcesorPrace.Remove(praca_2);
                 praca_2 = praca_2.NastepnaPraca;
             }
-
-            // zamiana zadań lub przeniesienie zadania
+            // Zamiana lub przeniesienie pracy
             Procesor1.ProcesorPrace.InsertRange(IDpraca_1, pom_prace_2);
             Procesor2.ProcesorPrace.InsertRange(IDpraca_2, pom_prace_1);
-
-            // Aktualizacja StartTime i IndexOnProcesor dla zadań na procesorach po podmianie
+            // Aktualizacja czasu i ID dla prac na procesorach po podmianie
             for (int i = IDpraca_1; i < Procesor1.ProcesorPrace.Count; i++)
             {
                 Procesor1.ProcesorPrace[i].Start = i == 0 ? 0 : Procesor1.ProcesorPrace[i - 1].Koniec();
@@ -121,8 +118,7 @@ namespace Projekt_1
             }
             return harmonogram_kopia;
         }
-
-        // Metoda wyciągająca największy czas zakończenia ze wszystkich procesorów
+        // Metoda wyciągająca najdłuższy czas z prac procesora
         public int MaxCzas()
         {
             int maxKoniec = int.MinValue;
@@ -132,26 +128,26 @@ namespace Projekt_1
                         maxKoniec = Praca.Koniec();
             return maxKoniec;
         }
-
-        // wypisanie harmonogramu - lista zadań dla każdego procesora gdzie liczba * oznacza czas wykonania zadania
+        // Print zwykły, wydaje mi się, że w miare elegancki
         public void Print()
         {
             int i = 0;
             foreach (var procesor in Procesory)
             {
                 i++;
-                Console.Write($"P{i}: | ");
+                Console.Write($"Pro {i}: || ");
                 foreach (var p in procesor.ProcesorPrace)
                 {
-                    Console.Write($"J{p.Numer}: ");
+                    Console.Write($"Praca {p.Numer}: ");
                     for (int j = 0; j < p.CzasPracy; j++)
-                        Console.Write("*");
-                    Console.Write(" | ");
+                        Console.Write("+");
+                    Console.Write(" | | ");
                 }
                 Console.WriteLine("");
             }
             Console.WriteLine($"Czas zakończenia pracy: {this.MaxCzas()}");
         }
+        // Metoda kopiująca harmonogramy
         private Harmonogram Kopiuj()
         {
             Harmonogram harmonogram = new Harmonogram(this.Procesory.Count);
@@ -175,11 +171,13 @@ namespace Projekt_1
             }
             return harmonogram;
         }
+        //Metoda znajdująca pierwsza prace w kolejce
         private Praca PierwszaPraca(Praca praca)
         {
             if (praca.PoprzedniaPraca == null) return praca;
             return PierwszaPraca(praca.PoprzedniaPraca);
         }
+        // Metoda przydzielająca prace do procesora
         private void PrzydzielPrace(Praca praca)
         {
             if (!praca.PrzydzielProcesor)

@@ -12,7 +12,8 @@ namespace Projekt_1
 {
     class Genetic
     {
-        private const int PopulationSize = 100;
+        #region Konstruktor i dane wejściowe
+        private const int Populacja = 100;
         private List<Praca> prace;
         private int Licznik;
 
@@ -21,101 +22,87 @@ namespace Projekt_1
             Licznik = licznik;
             prace = praca;
         }
-
+        #endregion
+        #region Metody
         public Harmonogram NajlepszyHarmonogram()
         {
+            
             var population = new Population();
-
-            List<Praca> populationJobs = new List<Praca>();
-            foreach (var job in prace)
+            // Dodanie pracy do populacji
+            List<Praca> PopulacjaPrace = new List<Praca>();
+            foreach (var p in prace)
             {
-                if (job.PoprzedniaPraca == null)
-                {
-                    populationJobs.Add(job);
-                }
+                if (p.PoprzedniaPraca == null)
+                    PopulacjaPrace.Add(p);
             }
 
-            //create the chromosomes
-            for (var p = 0; p < PopulationSize; p++)
+            //tworzenie chromosomów
+            for (var p = 0; p < Populacja; p++)
             {
                 var chromosome = new Chromosome();
-                foreach (var job in populationJobs)
-                {
-                    chromosome.Genes.Add(new Gene(job));
-                }
+                foreach (var c in PopulacjaPrace)
+                    chromosome.Genes.Add(new Gene(c));
 
                 chromosome.Genes.ShuffleFast();
                 population.Solutions.Add(chromosome);
             }
 
-            //create the elite operator
+            //Tworzenie operatorów elit
             var elite = new Elite(5);
 
-            //create the crossover operator
+            //Tworzenie operartora mieszania
             var crossover = new Crossover(0.8)
             {
                 CrossoverType = CrossoverType.DoublePointOrdered
             };
 
-            //create the mutation operator
+            //Tworzenie operatora mutacji
             var mutate = new SwapMutate(0.02);
 
-            //create the GA
+            //Tworzenie algorytmu genetycznego
             var ga = new GeneticAlgorithm(population, CalculateFitness);
 
-            //hook up to some useful events
-            /*ga.OnGenerationComplete += ga_OnGenerationComplete;
-            ga.OnRunComplete += ga_OnRunComplete;*/
-
-            //add the operators
+            //Dodaj operatory
             ga.Operators.Add(elite);
             ga.Operators.Add(crossover);
             ga.Operators.Add(mutate);
 
-            //run the GA
+            //odpal algorytm
             ga.Run(Terminate);
 
             var fittest = ga.Population.GetTop(1)[0];
 
-            List<Praca> jobs = new List<Praca>();
+            List<Praca> prace2 = new List<Praca>();
 
             foreach (var gene in fittest.Genes)
-            {
-                jobs.Add((Praca)gene.ObjectValue);
-            }
+                prace2.Add((Praca)gene.ObjectValue);
 
-            Harmonogram schedule = Harmonogram.StworzKolejkePrac(jobs, Licznik);
-
-            return schedule;
+            Harmonogram harmonogram = Harmonogram.StworzKolejkePrac(prace2, Licznik);
+            return harmonogram;
         }
-
+        // Wyznaczanie najlepszego
         public double CalculateFitness(Chromosome chromosome)
         {
             var minTime = CalculateMinTime(chromosome);
-
             var fitness = 10 / minTime;
             return fitness > 1.0 ? 1.0 : fitness;
 
         }
 
-        // Generowanie nowego Harmonogram na podstawie posortowanych zadań (genów) i zwrócenie czasu wykonania tego harmonogramu
+        //Generowanie nowego harmonogramu na podstawie genów i zwrócenie czasu wykonywania
         private double CalculateMinTime(Chromosome chromosome)
         {
-            List<Praca> jobs = new List<Praca>();
-
+            List<Praca> prace = new List<Praca>();
             foreach (var gene in chromosome.Genes)
-            {
-                jobs.Add((Praca)gene.ObjectValue);
-            }
-
-            Harmonogram newSchedule = Harmonogram.StworzKolejkePrac(jobs, Licznik);
-
-            return newSchedule.MaxCzas();
+                prace.Add((Praca)gene.ObjectValue);
+            Harmonogram harmonogram = Harmonogram.StworzKolejkePrac(prace, Licznik);
+            return harmonogram.MaxCzas();
         }
-
+        // Masowe wymieranie populacji
         public static bool Terminate(Population population, int currentGeneration, long currentEvaluation)
         {
             return currentGeneration > 100;
         }
+        #endregion
     }
 }

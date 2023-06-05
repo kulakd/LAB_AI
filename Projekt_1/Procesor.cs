@@ -8,12 +8,11 @@ namespace Projekt_1
 {
     public class Procesor
     {
+        #region Konstruktor
         public List<Praca> ProcesorPrace { get; set; } // lista zadań
-        // Konstruktor
-        public Procesor()
-        {
-            ProcesorPrace = new List<Praca>();
-        }
+        public Procesor(){ ProcesorPrace = new List<Praca>();}
+        #endregion
+        #region Metody
         // Metoda dodająca zadanie do procesora
         public void DodajPrace(Praca praca)
         {
@@ -22,7 +21,6 @@ namespace Projekt_1
             else
                 praca.Start = 0;
             ProcesorPrace.Add(praca);
-
             praca.Procesor = this;
             praca.IDProcesor = ProcesorPrace.Count - 1;
             praca.PrzydzielProcesor = true;
@@ -33,9 +31,11 @@ namespace Projekt_1
             ProcesorPrace.Remove(praca);
             praca.PrzydzielProcesor = false;
         }
+        // Metoda czy ukonyczly sie prace z procesora
         public int Koniec()
         {
             return ProcesorPrace.Count > 0 ? ProcesorPrace[ProcesorPrace.Count - 1].Koniec() : 0;
         }
+        #endregion
     }
 }
