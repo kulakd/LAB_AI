@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "RJ8xFtMuAzLrxGrARIHpG6xmDoB2Ztgv3sAtaR7m+4L4sSXNKbrJMIcqeT4KjTzgHZ7AfUfaxVUxvuPTtFZZ6A==",
+  "dgSpecHash": "YnbdJg06iVXOnwd2XeW25OB1GeJ0L2LVchBqf3jczBmC2DwO+j8Y65CmVx6VUJl8SaNoK//LpEcu6Z0ojezIiA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dawid\\source\\repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Source\\Repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\dawid\\.nuget\\packages\\gaf\\2.3.1\\gaf.2.3.1.nupkg.sha512"
+    "C:\\Users\\Lenovo\\.nuget\\packages\\gaf\\2.3.1\\gaf.2.3.1.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dawid\\source\\repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj": {}
+    "C:\\Users\\Lenovo\\Source\\Repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dawid\\source\\repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj": {
+    "C:\\Users\\Lenovo\\Source\\Repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dawid\\source\\repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Source\\Repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj",
         "projectName": "Projekt_1",
-        "projectPath": "C:\\Users\\dawid\\source\\repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj",
-        "packagesPath": "C:\\Users\\dawid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dawid\\source\\repos\\LAB_AI\\Projekt_1\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Source\\Repos\\LAB_AI\\Projekt_1\\Projekt_1.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Source\\Repos\\LAB_AI\\Projekt_1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\dawid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

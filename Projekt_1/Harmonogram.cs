@@ -19,7 +19,7 @@ namespace Projekt_1
                 Procesory.Add(new Procesor());
         }
         #endregion
-
+        #region Metody
         // inicjalizacja harmonogramu
         public void Initialize(List<Praca> praca)
         {
@@ -135,17 +135,17 @@ namespace Projekt_1
             foreach (var procesor in Procesory)
             {
                 i++;
-                Console.Write($"Pro {i}: || ");
+                Console.Write("Procesor "+i+": || ");
                 foreach (var p in procesor.ProcesorPrace)
                 {
-                    Console.Write($"Praca {p.Numer}: ");
+                    Console.Write("Praca "+p.Numer+": ");
                     for (int j = 0; j < p.CzasPracy; j++)
                         Console.Write("+");
                     Console.Write(" | | ");
                 }
                 Console.WriteLine("");
             }
-            Console.WriteLine($"Czas zakończenia pracy: {this.MaxCzas()}");
+            Console.WriteLine("Czas zakończenia pracy: "+this.MaxCzas());
         }
         // Metoda kopiująca harmonogramy
         private Harmonogram Kopiuj()
@@ -195,5 +195,6 @@ namespace Projekt_1
                     Procesory[random.Next(0, Procesory.Count)].DodajPrace(praca);
             }
         }
+        #endregion
     }
 }

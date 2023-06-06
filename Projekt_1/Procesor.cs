@@ -31,7 +31,7 @@ namespace Projekt_1
             ProcesorPrace.Remove(praca);
             praca.PrzydzielProcesor = false;
         }
-        // Metoda czy ukonyczly sie prace z procesora
+        // Metoda czy ukonczyly sie prace z procesora
         public int Koniec()
         {
             return ProcesorPrace.Count > 0 ? ProcesorPrace[ProcesorPrace.Count - 1].Koniec() : 0;

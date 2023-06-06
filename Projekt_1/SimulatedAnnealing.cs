@@ -9,15 +9,15 @@ namespace Projekt_1
     class SimulatedAnnealing
     {
         #region Konstruktory i dane początkowe
-        private double Temperature;
-        private double TemperatureEnd;
-        private double Alpha;
+        private double Temperatura;
+        private double TemperaturaKoniec;
+        private double zmiana;
         
-        public SimulatedAnnealing(double temperature, double temperatureEnd, double alpha)
+        public SimulatedAnnealing(double _temperatura, double _temperaturaKoniec, double _zmiana)
         {
-            Temperature = temperature;
-            TemperatureEnd = temperatureEnd;
-            Alpha = alpha;
+            Temperatura = _temperatura;
+            TemperaturaKoniec = _temperaturaKoniec;
+            zmiana = _zmiana;
         }
         #endregion
         #region Metody
@@ -25,16 +25,16 @@ namespace Projekt_1
         {
             int iterator = 0;
             Random rand = new Random();
-            while (Temperature >= TemperatureEnd) // Wyszarzanie 
+            while (Temperatura >= TemperaturaKoniec) // Wyszarzanie 
             {
                 //Generuj nowy harmonogram na podstawie poprzednich 
                 Harmonogram nowy = harmonogram.Sasiad(rand);
                 // Wybranie nowego harmonogramu lub gorszego
-                if (nowy.MaxCzas() < harmonogram.MaxCzas() || Math.Exp((harmonogram.MaxCzas() - nowy.MaxCzas()) / Temperature) > rand.NextDouble())
+                if (nowy.MaxCzas() < harmonogram.MaxCzas() || Math.Exp((harmonogram.MaxCzas() - nowy.MaxCzas()) / Temperatura) > rand.NextDouble())
                     harmonogram = nowy;
                 // Chłodzenie
                 if (iterator % 10 == 0)
-                    Temperature *= Alpha;
+                    Temperatura *= zmiana;
                 iterator++;
             }
             return harmonogram;

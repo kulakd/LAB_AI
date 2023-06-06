@@ -42,7 +42,6 @@ namespace Projekt_1
                 var chromosome = new Chromosome();
                 foreach (var c in PopulacjaPrace)
                     chromosome.Genes.Add(new Gene(c));
-
                 chromosome.Genes.ShuffleFast();
                 population.Solutions.Add(chromosome);
             }
@@ -50,7 +49,7 @@ namespace Projekt_1
             //Tworzenie operatorów elit
             var elite = new Elite(5);
 
-            //Tworzenie operartora mieszania
+            //Tworzenie operatora mieszania
             var crossover = new Crossover(0.8)
             {
                 CrossoverType = CrossoverType.DoublePointOrdered

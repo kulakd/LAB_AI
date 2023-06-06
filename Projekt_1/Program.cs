@@ -13,12 +13,11 @@ namespace Projekt_1
             List<Praca> prace = new List<Praca>()
             {
                 new Praca(1, 2),
-                new Praca(2, 12),
-                new Praca(3, 4),
-                new Praca(4, 8),
-                new Praca(5, 7)
+                new Praca(2, 4),
+                new Praca(3, 8),
+                new Praca(4, 16),
+                new Praca(5, 32)
             };
-
             // relacje pomiędzy pracami
             prace[0].PoprzedniaPraca = prace[2];
             prace[4].NastepnaPraca = prace[0];
@@ -41,10 +40,10 @@ namespace Projekt_1
             stoper.Start();
             harmonogram = sa.NajlepszyHarmonogram(harmonogramInit);
             stoper.Stop();
-            long duration = stoper.ElapsedMilliseconds;
+            long czastrwania = stoper.ElapsedMilliseconds;
             Console.WriteLine("Algorytm SimulatedAnnealing");
             harmonogram.Print();
-            Console.WriteLine($"Czas trwania algorytmu w ms: {duration}");
+            Console.WriteLine("Czas trwania algorytmu w ms: "+ czastrwania);
             Console.WriteLine("");
             Console.WriteLine("");
             #endregion
@@ -53,10 +52,10 @@ namespace Projekt_1
             stoper.Start();
             harmonogram = ga.NajlepszyHarmonogram();
             stoper.Stop();
-            duration = stoper.ElapsedMilliseconds;
+            czastrwania = stoper.ElapsedMilliseconds;
             Console.WriteLine("Algorytm Genetyczny");
             harmonogram.Print();
-            Console.WriteLine($"Czas trwania algorytmu w ms: {duration}");
+            Console.WriteLine("Czas trwania algorytmu w ms: "+ czastrwania);
             Console.WriteLine("");
             Console.WriteLine("");
             #endregion
